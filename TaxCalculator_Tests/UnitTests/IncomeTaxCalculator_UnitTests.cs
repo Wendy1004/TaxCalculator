@@ -33,7 +33,7 @@ namespace TaxCalculator_Tests.UnitTests
 					},
 					new TaxConfigItem() {
 						Min = 26669,
-						Max = -1,  //Maximum value of decimal type
+						Max = -1,  //Negative value is configured to skip checking upper limit
 						ExcessOver = 0,
 						Percent = 2,
 						BaseTax = 0
@@ -86,7 +86,7 @@ namespace TaxCalculator_Tests.UnitTests
 					},
 					new TaxConfigItem() {
 						Min = 180001,
-						Max = -1, //Negative is unlimited of decimal value
+						Max = -1, //Negative value is configured to skip checking upper limit
 						ExcessOver = 180000,
 						Percent = 47,
 						BaseTax = 54232

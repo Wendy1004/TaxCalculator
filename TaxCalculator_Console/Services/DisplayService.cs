@@ -18,9 +18,9 @@ namespace TaxCalculator_Console.Services
 			Console.WriteLine("Calculating salary details...");
 			Console.WriteLine("");
 			Console.WriteLine("Gross package: " + this.formatToCurrency(salaryPackage.GrossPackageAnnual));
-			Console.WriteLine("Superannuation:: " + this.formatToCurrency(salaryPackage.SuperContributionAnnual));
+			Console.WriteLine("Superannuation: " + this.formatToCurrency(salaryPackage.SuperContributionAnnual));
 			Console.WriteLine("");
-			Console.WriteLine("Taxable income:: " + this.formatToCurrency(salaryPackage.TaxableIncomeAnnual));
+			Console.WriteLine("Taxable income: " + this.formatToCurrency(salaryPackage.TaxableIncomeAnnual));
 			Console.WriteLine("");
 			Console.WriteLine("Deductions:");
 			Console.WriteLine("Medicare Levy: " + this.formatToCurrency(salaryPackage.MedicalLevy));
