@@ -1,11 +1,11 @@
 # Tax Calculator
 
-This is a quick calculator that allows users to enter a gross salary package and a pay frequency, and then display a breakdown of this salary and what their pay will be.
+This is a quick calculator that allows users to enter a gross salary package and a pay frequency, and then display a breakdown of this salary and what their pay package will be.
 
 ## Usage
 
-Enter your gross salary package. For example: 65000
-Then enter your pay frequency (W for weekly, F for fortnightly, M for monthly). For example: M
+- Enter your gross salary package. For example: 65000
+- Then enter your pay frequency (W for weekly, F for fortnightly, M for monthly). For example: M
 
 You will see your monthly packet as below:
 
@@ -13,17 +13,17 @@ You will see your monthly packet as below:
 Calculating salary details...
 
 Gross package: $65,000.00
-Superannuation:: $5,639.27
+Superannuation: $5,639.27
 
-Taxable income:: $59,360.73
+Taxable income: $59,360.73
 
 Deductions:
 Medicare Levy: $1,188.00
 Budget Repair Levy: $0.00
-Income Tax: $0.00
+Income Tax: $10,839.00
 
-Net income: $58,172.73
-Pay packet: $4,847.73 per month
+Net income: $47,333.73
+Pay packet: $3,944.48 per month
 
 Do you want to continue (Y/N):  -> Enter Y to continue, N to quit the app.
 ```
