@@ -4,6 +4,6 @@ namespace TaxCalculator.Interfaces
 {
 	public interface IIncomeTaxCalculator
 	{
-		SalaryPackage GetSalaryPackage(decimal grossPackage, string payFrequency);
+		public SalaryPackage GetSalaryPackage(decimal grossPackage, string payFrequency);			
 	}
 }

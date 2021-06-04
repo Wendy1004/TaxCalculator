@@ -44,6 +44,7 @@ Note: The maximum gross package will be the maximum positive value of decimal, w
 - The application is designed and implemented with .Net Core 3.1, Dependency Injection, Serilog for logging, and NUnit for Unit Tests.
 - Business exceptions are processed and display nicely to users.
 - Simple overall technical error handling will catch and log all exceptions into a daily rolling log file.
+- Separate two projects: one for TaxCalculator (all calculations and can be resued easily later) and another ConsoleApp for inputs and displays. 
 
 ## Roadmap
 

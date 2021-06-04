@@ -8,7 +8,7 @@ namespace TaxCalculator.Services
 	{
 		private decimal _grossPackage;
 		private decimal _taxableIncome;
-		private string _payFrequency;
+		private PaymentFequency _payFrequency;
 		private TaxConfig _taxConfig;
 		public IncomeTaxCalculator(TaxConfig taxConfig)
 		{
@@ -17,11 +17,11 @@ namespace TaxCalculator.Services
 		public SalaryPackage GetSalaryPackage(decimal grossPackage, string payFrequency)
 		{
 			_grossPackage = grossPackage;
-			_payFrequency = payFrequency.ToUpper();
+			_payFrequency = IncomeTaxCalculator.GetPaymentFrequency(payFrequency);
 			_taxableIncome = Math.Round(_grossPackage / (1 + _taxConfig.SuperContributionPercent/100), 2);
 
 			var incomeTax = new SalaryPackage();
-			incomeTax.PaymentFrequency = this.getPaymentFrequency();
+			incomeTax.PaymentFrequency = _payFrequency;
 			if (incomeTax.PaymentFrequency != PaymentFequency.Unknown)
 			{
 				incomeTax.GrossPackageAnnual = _grossPackage;
@@ -36,7 +36,22 @@ namespace TaxCalculator.Services
 			}
 			return incomeTax;
 		}
-	
+
+		/// <summary>
+		/// Get Payment Frequency
+		/// </summary>
+		/// <returns></returns>
+		public static PaymentFequency GetPaymentFrequency(string payFrequency)
+		{
+			switch (payFrequency.ToUpper())
+			{
+				case "W": return PaymentFequency.Weekly;
+				case "F": return PaymentFequency.Fortnightly;
+				case "M": return PaymentFequency.Monthly;
+				default: return PaymentFequency.Unknown;
+			}
+		}
+
 		/// <summary>
 		/// Calculate Super Contribution 
 		/// </summary>
@@ -95,37 +110,23 @@ namespace TaxCalculator.Services
 		private decimal getPayPackage(decimal netIncome)
 		{
 			decimal retValue = 0;
-
-			if (_payFrequency == "W")
-			{
-				retValue = netIncome / 52;
-			}
-			else if (_payFrequency == "F")
-			{
-				retValue = netIncome / 26;
-			}
-			else if (_payFrequency == "M")
-			{
-				retValue = netIncome / 12;
-			}
-
-			return Math.Round(retValue,2);
-
-		}
-		/// <summary>
-		/// Get Payment Frequency
-		/// </summary>
-		/// <returns></returns>
-		private PaymentFequency getPaymentFrequency()
-		{
 			switch (_payFrequency)
 			{
-				case "W": return PaymentFequency.Weekly;
-				case "F": return PaymentFequency.Fortnightly;
-				case "M": return PaymentFequency.Monthly;
-				default: return PaymentFequency.Unknown;
+				case PaymentFequency.Weekly: 
+					retValue = netIncome / 52;
+					break;
+				case PaymentFequency.Fortnightly:
+					retValue = netIncome / 26;
+					break;
+				case PaymentFequency.Monthly:
+					retValue = netIncome / 12;
+					break;
+				default: break;
+
 			}
+			return Math.Round(retValue,2);
 		}
+		
 		/// <summary>
 		/// 
 		/// </summary>
